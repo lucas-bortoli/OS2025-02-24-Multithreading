@@ -3,10 +3,14 @@ use std::thread::{self, JoinHandle};
 
 pub enum Audio {
     BackgroundMusic,
+    Door,
+    Invalid,
 }
 
 pub enum Message {
     PlaySndBackgroundMusic,
+    PlaySndDoor,
+    PlaySndInvalid,
     Close,
 }
 
@@ -29,13 +33,16 @@ impl AudioManager {
                 }
 
                 match received.unwrap() {
-                    Message::PlaySndBackgroundMusic => {
-                        // println!("Playing: BackgroundMusic");
-
-                        let mus_background = awedio::sounds::open_file("./bgm.mp3")
-                            .expect("Failed to open audio file");
-                        manager.play(mus_background);
-                    }
+                    Message::PlaySndBackgroundMusic => manager.play(
+                        awedio::sounds::open_file("./bgm.mp3").expect("Failed to open audio file"),
+                    ),
+                    Message::PlaySndDoor => manager.play(
+                        awedio::sounds::open_file("./door.wav").expect("Failed to open audio file"),
+                    ),
+                    Message::PlaySndInvalid => manager.play(
+                        awedio::sounds::open_file("./invalid.wav")
+                            .expect("Failed to open audio file"),
+                    ),
                     Message::Close => {
                         println!("Closing audio thread!!");
                         break;
@@ -53,6 +60,8 @@ impl AudioManager {
     pub fn play(&self, audio: Audio) {
         let msg = match audio {
             Audio::BackgroundMusic => Message::PlaySndBackgroundMusic,
+            Audio::Door => Message::PlaySndDoor,
+            Audio::Invalid => Message::PlaySndInvalid,
         };
 
         self.tx

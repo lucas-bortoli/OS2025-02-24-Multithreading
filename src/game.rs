@@ -30,7 +30,7 @@ pub fn room_lookup(room: &Room) -> RoomDescription {
         Room::Hallway => RoomDescription {
             id: Room::Hallway,
             name: "Hall de entrada".to_string(),
-            description: "Você está no longo hall de entrada que junta o seu escritório aos dos colegas. O chão brilhante parece polido há muito tempo e há gaveteiros espalhados pelo chão. Na sua frente você pode ver duas portas; à direita, uma porta indica o acesso à sala de reunião, e à esquerda, uma porta para a sala de recreação.".to_string(),
+            description: "Você está no longo hall de entrada que junta o seu escritório aos dos colegas. O chão brilhante parece polido há muito tempo e há gaveteiros espalhados pelo chão. Na sua frente você pode ver duas portas; à esquerda, uma porta indica o acesso à sala de reunião, e à direita, uma porta para a sala de recreação.".to_string(),
             actions: vec![
                 (RoomAction::GoToMeetingRoom, "Entrar na porta da esquerda".to_string()),
                 (RoomAction::GoToEmployeeLounge, "Entrar na porta da direita".to_string()),
@@ -40,7 +40,7 @@ pub fn room_lookup(room: &Room) -> RoomDescription {
         Room::MeetingRoom => RoomDescription {
             id: Room::MeetingRoom,
             name: "Sala de reuniões".to_string(),
-            description: "Uma longa mesa de reuniões fica no centro da sala. De cada lado há um pequeno sofá com poltrona de couro macio, e na parede estão pendurados vários cartazes corporativos, além de uma porta para uma área de serviço. No projetor, há uma apresentação de PowerPoint em pausa com uma imagem de gráficos de receita e lucros. Na tela: \"Empregue a solução A.\" Um cheiro levemente enjoativo está pairando na sala. Você se lembra dos cheiros do ambiente: as notas amargas dos desinfetantes corporativos.".to_string(),
+            description: "Uma longa mesa de reuniões fica no centro da sala. De cada lado há um pequeno sofá com poltrona de couro macio, e na parede estão pendurados vários cartazes corporativos, além de uma porta para uma área de serviço. No projetor, há uma apresentação de PowerPoint em pausa com uma imagem de gráficos de receita e lucros. Na tela: \"Empregue a solução A.\" Um cheiro levemente enjoativo está pairando na sala. Você se lembra dos cheiros do ambiente: as notas amargas dos desinfetantes.".to_string(),
             actions: vec![
                 (RoomAction::GoToHallway, "Voltar ao hall".to_string())
             ],
